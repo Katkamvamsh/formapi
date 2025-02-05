@@ -1,15 +1,18 @@
-const express=require("express")
-const app=express()
-const port=3334
-const db=require('./db')
-const importedUsers = require("./Schema")
-const bcrypt = require('bcryptjs');
-const cors = require("cors");
+const express=require("express") //frame work for node.js
+const app=express() //calling frame work to access all methods
+const port=3334 //port number for server
+const db=require('./db') //to know the database connect or not
+const importedUsers = require("./Schema") //importing schema model
+const bcrypt = require('bcryptjs'); // password bcryptjs and save into the database
+const cors = require("cors"); // cross origin resource share
 const status = require("statuses")
-require("dotenv").config()
-const jwt=require("jsonwebtoken")
-app.use(cors()); 
-app.use(express.json());
+require("dotenv").config() // calling dotenv file to access variables
+const jwt=require("jsonwebtoken") // for generating token
+const middleware=require("./middleware") //imported route function by middleware variable
+app.use(cors()); //middleware
+app.use(express.json());//middleware to send response to user UI
+
+
 
 app.post('/register', async(req,res)=>{ 
     const {userName,emailId,password,confirmPassword}=req.body
@@ -93,6 +96,15 @@ if(token){
 
 })
 
+// not protected route
+app.get('/about', middleware,(req, res) => {
+    return res.json({
+      message: "vam"
+    });
+  });
+  //use "middleware" directly because we are not accessing particular function
+  //from middleware.js file there is only 1 function so use directly 
+  //with imported variable name
 
 app.listen(port,(error)=>{
     if(error){

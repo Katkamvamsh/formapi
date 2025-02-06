@@ -15,17 +15,17 @@ app.use(express.json());//middleware to send response to user UI
 
 
 app.post('/register', async(req,res)=>{ 
-    const {userName,emailId,password,confirmPassword}=req.body
+    const {userName,emailId,password,ConfirmPassword}=req.body
     console.log(req.body)
-  if (!userName || !emailId || !password || !confirmPassword){
-    res.json({
+  if (!userName || !emailId || !password || !ConfirmPassword){
+  return  res.json({
         ok:false,
         status:400,
         message:"all fields are mandatory to filled"
     })
     }
        
-    if(password !== confirmPassword){
+    if(password !== ConfirmPassword){
 return res.json({
     status:400,
     message:"password are not matched"
@@ -50,7 +50,7 @@ const savingUser= new importedUsers({
 })
  await savingUser.save()
  return res.status(200).json({
-    success: true,
+    ok: true,
     message: "User successfully registered.",
   });
 })

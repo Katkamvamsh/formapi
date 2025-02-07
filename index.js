@@ -102,7 +102,7 @@ if(token){
 // not protected route
 app.get('/about', middleware,(req, res) => {
     return res.json({
-      message: "Please be in touch our website is being in finalized you will  notified after the completion Regarding: KATKAM VAMSHIKRISNA Thank you visit again 🤝 🤝 🤝"
+      message: "Please be in touch our website is being in finalized you will  notified after the completion                      Regarding: KATKAM VAMSHIKRISNA Thank you visit again 🤝 🤝 🤝"
     });
   });
   //use "middleware" directly because we are not accessing particular function

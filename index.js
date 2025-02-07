@@ -40,6 +40,9 @@ if(existingEmailId){
         message:"This emailId is already registered, try with the new emailId"
     })
 }
+// return word is mandatory for every response else it will through the error
+// deployment will be success but from frontend will not work properly
+// so return word is mandatory
 
 const hashPassword=await bcrypt.hash(password,10)
 
@@ -99,7 +102,7 @@ if(token){
 // not protected route
 app.get('/about', middleware,(req, res) => {
     return res.json({
-      message: "vam"
+      message: "Please be in touch our website is being in finalized you will  notified after the completion Regarding: KATKAM VAMSHIKRISNA Thank you visit again 🤝 🤝 🤝"
     });
   });
   //use "middleware" directly because we are not accessing particular function
